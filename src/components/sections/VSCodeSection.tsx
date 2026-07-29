@@ -501,43 +501,47 @@ function highlightSyntax(line: string, lang: string) {
   }
 
   // Python highlighting keywords
+    // Python highlighting keywords
   if (lang === 'python') {
-    const keywords = ['import', 'from', 'class', 'def', 'return', 'if', 'else', 'self', 'print', 'as', 'True', 'False'];
     return (
-  <span
-    dangerouslySetInnerHTML={{
-      __html: line
-        .replace(
-          new RegExp(`\\b(${keywords.join('|')})\\b`, 'g'),
-          '<span class="text-purple-400 font-semibold">$1</span>'
-        )
-        .replace(
-          /(".*?"|'.*?')/g,
-          '<span class="text-amber-300">$1</span>'
-        )
-        .replace(
-          /(\b\d+\.?\d*\b)/g,
-          '<span class="text-emerald-400">$1</span>'
-        ),
-    }}
-  />
-);
+      <span
+        dangerouslySetInnerHTML={{
+          __html: line
+            .replace(
+              /\b(def|return|if|else|elif|for|while|import|from|class|in|True|False|None|print)\b/g,
+              '<span class="text-purple-400 font-semibold">$1</span>'
+            )
+            .replace(
+              /(".*?"|'.*?')/g,
+              '<span class="text-amber-300">$1</span>'
+            )
+            .replace(
+              /\b\d+\.?\d*\b/g,
+              '<span class="text-emerald-400">$&</span>'
+            ),
+        }}
+      />
+    );
+  }
 
-  const highlightLine = (line: string) => {
-  // TypeScript / HCL basic highlighting
+  // TypeScript / JavaScript / HCL highlighting
   return (
     <span
       dangerouslySetInnerHTML={{
         __html: line
           .replace(
-            /\b(export|interface|const|import|from|resource|provider|terraform|output|value)\b/g,
+            /\b(export|interface|const|let|var|import|from|function|return|class|new|resource|provider|terraform|output|value)\b/g,
             '<span class="text-red-400 font-semibold">$1</span>'
           )
           .replace(
-            /(".*?")/g,
+            /(".*?"|'.*?')/g,
             '<span class="text-amber-300">$1</span>'
+          )
+          .replace(
+            /\b\d+\.?\d*\b/g,
+            '<span class="text-emerald-400">$&</span>'
           ),
       }}
     />
   );
-};
+}
