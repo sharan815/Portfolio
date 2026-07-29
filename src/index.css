@@ -1,0 +1,164 @@
+@import "tailwindcss";
+
+@theme {
+  --font-bebas: 'Bebas Neue', sans-serif;
+  --font-orbitron: 'Orbitron', monospace;
+  --font-inter: 'Inter', sans-serif;
+
+  --color-sparta-dark: #050505;
+  --color-sparta-surface: #0a0a0f;
+  --color-sparta-card: #0f0f17;
+  --color-sparta-card-hover: #151522;
+  --color-sparta-border: #1e1e2d;
+  --color-sparta-red: #E50914;
+  --color-sparta-red-bright: #FF1E27;
+  --color-sparta-red-glow: rgba(229, 9, 20, 0.4);
+  --color-sparta-red-dim: rgba(229, 9, 20, 0.15);
+  --color-sparta-gunmetal: #1a1a24;
+}
+
+@layer base {
+  body {
+    background-color: #050505;
+    color: #e2e8f0;
+    font-family: var(--font-inter);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-bebas);
+    letter-spacing: 0.05em;
+  }
+}
+
+/* Custom Utilities for AAA Cyber HUD Gaming Aesthetic */
+.font-bebas {
+  font-family: var(--font-bebas);
+}
+
+.font-orbitron {
+  font-family: var(--font-orbitron);
+}
+
+.font-inter {
+  font-family: var(--font-inter);
+}
+
+/* Red Neon Glowing Shadows & Borders */
+.glow-red-sm {
+  box-shadow: 0 0 15px rgba(229, 9, 20, 0.25);
+}
+
+.glow-red-md {
+  box-shadow: 0 0 25px rgba(229, 9, 20, 0.4);
+}
+
+.glow-red-lg {
+  box-shadow: 0 0 40px rgba(229, 9, 20, 0.6);
+}
+
+.text-glow-red {
+  text-shadow: 0 0 12px rgba(229, 9, 20, 0.8), 0 0 25px rgba(255, 30, 39, 0.5);
+}
+
+.border-glow-red {
+  border-color: rgba(229, 9, 20, 0.6);
+  box-shadow: inset 0 0 10px rgba(229, 9, 20, 0.2), 0 0 15px rgba(229, 9, 20, 0.3);
+}
+
+/* Cyber Glassmorphism */
+.glass-panel {
+  background: rgba(10, 10, 15, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-card {
+  background: linear-gradient(135deg, rgba(20, 20, 30, 0.7) 0%, rgba(10, 10, 15, 0.85) 100%);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(229, 9, 20, 0.2);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-card:hover {
+  border-color: rgba(229, 9, 20, 0.7);
+  box-shadow: 0 10px 30px -10px rgba(229, 9, 20, 0.3);
+  transform: translateY(-4px);
+}
+
+/* HUD Corner Accents */
+.hud-corner-tl {
+  position: relative;
+}
+.hud-corner-tl::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  width: 12px;
+  height: 12px;
+  border-top: 2px solid #E50914;
+  border-left: 2px solid #E50914;
+}
+
+.hud-corner-br {
+  position: relative;
+}
+.hud-corner-br::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  right: -1px;
+  width: 12px;
+  height: 12px;
+  border-bottom: 2px solid #E50914;
+  border-right: 2px solid #E50914;
+}
+
+/* Cyber Metallic Gradient Text */
+.gradient-text-red {
+  background: linear-gradient(135deg, #FFFFFF 20%, #E50914 80%, #FF1E27 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gradient-text-gunmetal {
+  background: linear-gradient(180deg, #FFFFFF 0%, #94A3B8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #050505;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1a1a24;
+  border: 1px solid rgba(229, 9, 20, 0.3);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #E50914;
+}
+
+/* Pulse Keyframes */
+@keyframes neonPulse {
+  0%, 100% {
+    opacity: 0.8;
+    filter: drop-shadow(0 0 8px rgba(229, 9, 20, 0.6));
+  }
+  50% {
+    opacity: 1;
+    filter: drop-shadow(0 0 20px rgba(255, 30, 39, 0.9));
+  }
+}
+
+.animate-neon-pulse {
+  animation: neonPulse 3s infinite ease-in-out;
+}
