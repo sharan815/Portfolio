@@ -1,4 +1,3 @@
-import React from 'react';
 import { ParticleCanvas } from './components/background/ParticleCanvas';
 import { MouseSpotlight } from './components/background/MouseSpotlight';
 import { Navbar } from './components/layout/Navbar';
