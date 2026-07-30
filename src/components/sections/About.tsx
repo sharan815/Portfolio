@@ -2,7 +2,6 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { PERSONAL_INFO } from '../../data/portfolioData';
 import { Shield, Target, CheckCircle2 } from 'lucide-react';
-import { SpartanEmblem } from '../hud/SpartanEmblem';
 
 export const About: React.FC = () => {
   return (
@@ -33,10 +32,31 @@ export const About: React.FC = () => {
           >
             <div className="glass-card p-6 rounded-2xl border border-red-900/40 relative hud-corner-tl hud-corner-br group">
               <div className="flex items-center space-x-4 pb-4 border-b border-red-900/30">
-                <SpartanEmblem size={56} />
+                {/* Profile Photo Avatar with Glowing Cyber Border */}
+                <div className="relative w-16 h-16 rounded-xl overflow-hidden border-2 border-[#E50914] shadow-[0_0_15px_rgba(229,9,20,0.5)] shrink-0 bg-[#050505] flex items-center justify-center">
+                  <img
+                    src={PERSONAL_INFO.profileImage}
+                    alt={PERSONAL_INFO.name}
+                    onError={(e) => {
+                      const target = e.currentTarget;
+                      if (target.src.startsWith('/') || !target.dataset.triedRelative) {
+                        target.dataset.triedRelative = 'true';
+                        target.src = '.' + PERSONAL_INFO.profileImage;
+                      } else {
+                        target.style.display = 'none';
+                      }
+                    }}
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 pointer-events-none border border-red-500/30 rounded-xl" />
+                </div>
+
                 <div>
-                  <h3 className="text-2xl font-bebas text-white tracking-wide">SHARAN B</h3>
+                  <h3 className="text-2xl font-bebas text-white tracking-wide">{PERSONAL_INFO.name}</h3>
                   <p className="text-xs font-orbitron text-[#E50914]">B.TECH AI & DATA SCIENCE</p>
+                  <span className="inline-block mt-1 text-[9px] font-orbitron text-emerald-400 font-bold uppercase tracking-wider">
+                    ● ACTIVE DEVELOPER
+                  </span>
                 </div>
               </div>
 

@@ -5,6 +5,7 @@ export const PERSONAL_INFO = {
   alias: "SHARAN",
   title: "AI Engineer • Full Stack Developer • Cloud & DevOps Engineer",
   badge: "EXCLUSIVE PORTFOLIO",
+  profileImage: "/assets/images/profile.jpg",
   tagline: "Architecting Intelligent Applications. Powering the Cloud. Building the Future.",
   intro: "I'm Sharan B, an AI & Data Science undergraduate passionate about Cloud Computing, DevOps, Full Stack Development, and Artificial Intelligence. I engineer scalable, cloud-native solutions that bridge innovation with real-world impact.",
   aboutWhoAmI: "A technology enthusiast driven by curiosity and innovation, I specialize in designing intelligent software solutions that combine AI, cloud infrastructure, and modern web technologies. I enjoy building applications from the ground up, automating workflows, deploying scalable services, and continuously improving user experiences through clean architecture and efficient engineering.",
