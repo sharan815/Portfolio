@@ -52,6 +52,15 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
             <img
               src={project.image}
               alt={project.title}
+              onError={(e) => {
+                const target = e.currentTarget;
+                if (!target.dataset.fallbackTried) {
+                  target.dataset.fallbackTried = 'true';
+                  if (project.image.startsWith('/')) {
+                    target.src = project.image.slice(1);
+                  }
+                }
+              }}
               className="w-full h-full object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0F] via-transparent to-transparent" />

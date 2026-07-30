@@ -74,6 +74,15 @@ export const Projects: React.FC = () => {
                 <img
                   src={project.image}
                   alt={project.title}
+                  onError={(e) => {
+                    const target = e.currentTarget;
+                    if (!target.dataset.fallbackTried) {
+                      target.dataset.fallbackTried = 'true';
+                      if (project.image.startsWith('/')) {
+                        target.src = project.image.slice(1);
+                      }
+                    }
+                  }}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0F0F17] via-transparent to-transparent opacity-90" />
