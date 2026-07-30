@@ -33,15 +33,32 @@ export const Hero: React.FC<HeroProps> = ({ onExploreProjects, onDownloadResume 
               <span>{PERSONAL_INFO.badge}</span>
             </div>
 
-            {/* Title */}
-            <div className="space-y-2">
-              <h1 className="text-6xl sm:text-7xl lg:text-8xl font-bebas tracking-wider text-white leading-none">
-                {PERSONAL_INFO.alias} <span className="text-gradient-text-red drop-shadow-[0_0_20px_rgba(229,9,20,0.5)]">B.</span>
-              </h1>
-              
-              <p className="text-xs sm:text-sm font-orbitron font-bold text-[#E50914] tracking-widest uppercase">
-                AI ENGINEER • FULL STACK DEVELOPER • CLOUD & DEVOPS
-              </p>
+            {/* Title & Avatar Header */}
+            <div className="flex items-center space-x-4 sm:space-x-5">
+              <div className="relative w-16 h-16 sm:w-20 sm:h-20 rounded-2xl overflow-hidden border-2 border-[#E50914] shadow-[0_0_25px_rgba(229,9,20,0.6)] shrink-0 bg-[#050505] p-0.5 group">
+                <img
+                  src={PERSONAL_INFO.profileImage}
+                  alt={PERSONAL_INFO.name}
+                  onError={(e) => {
+                    const target = e.currentTarget;
+                    if (target.src.startsWith('/') || !target.dataset.triedRelative) {
+                      target.dataset.triedRelative = 'true';
+                      target.src = '.' + PERSONAL_INFO.profileImage;
+                    }
+                  }}
+                  className="w-full h-full object-cover rounded-xl group-hover:scale-105 transition-transform duration-300"
+                />
+                <div className="absolute inset-0 rounded-xl border border-red-500/30 pointer-events-none" />
+              </div>
+              <div className="space-y-1">
+                <h1 className="text-5xl sm:text-7xl lg:text-8xl font-bebas tracking-wider text-white leading-none">
+                  {PERSONAL_INFO.alias} <span className="text-gradient-text-red drop-shadow-[0_0_20px_rgba(229,9,20,0.5)]">B.</span>
+                </h1>
+                
+                <p className="text-xs sm:text-sm font-orbitron font-bold text-[#E50914] tracking-widest uppercase">
+                  AI ENGINEER • FULL STACK DEVELOPER • CLOUD & DEVOPS
+                </p>
+              </div>
             </div>
 
             {/* Tagline & Description */}
